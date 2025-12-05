@@ -4,14 +4,12 @@ const { NewMessage } = require("telegram/events");
 const prompt = require("prompt-sync")({ sigint: true });
 
 // --- Your Configuration ---
-const apiId = 32307741;
-const apiHash = "ede22899a9a56ad775ce997d7e7f49be";
+const apiId = process.env.APP_ID;
+const apiHash = process.env.API_HASH;
 const TARGET_CHANNELS = ["@moallemannews"];
 const INTERMEDIATE_BOT_USERNAME = "@dasterast_agent_bot";
 
-let stringSession = new StringSession(
-  "1BAAOMTQ5LjE1NC4xNjcuOTEAUHvrf+aRHPhI6OobyLv8UQlZVfuvGcWm5ANqSUiEwyCdcEYsZ2I580byMHwpUCcEl5PBwcfZ+pKwQinm8D7sCaELXMMxtEs11fK7vEWk9w8ORXFCyNKEJoUnlKFc7oz7UVxQyRCOqJEGIrvCfj/KBXIcLMqP9ZhrYhoUv6Mya+l3lnWie2/KDKa/X0Q7xho8psBt4RSgFJPOa1c+Imd+H094TLndSyRICi5S+lmOgQocsrKF/Ovti/OrJK48b6ZPE36WU/5H5nmmOdA0YbVVI+6lE2casT0zSIRjSyx4OdaHkqmnesZkOWwDPIed28TXNlBwNX1CB7PA8qm+DA/KVDM=",
-);
+let stringSession = new StringSession(process.env.SESSION);
 
 async function startListening() {
   if (!stringSession.toString()) {
